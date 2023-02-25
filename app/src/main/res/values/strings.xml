@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Search Museum</string>
+    <string name="tv_info">Buscador de museos de la \n Comunidad de madrid</string>
+    <string name="txt_btn_selectFilter">Seleccionar Filtro</string>
+    <string name="txt_btn_consultLists">Consultar listado</string>
+    <string name="mn_list">Listado</string>
+    <string name="mn_maps">Mapa</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
