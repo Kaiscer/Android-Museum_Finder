@@ -12,7 +12,7 @@
    
 
     <ImageView
-        android:src="@drawable/m_prado"
+        android:src="@drawable/museum_del_prado2"
         android:scaleType="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
