@@ -46,7 +46,7 @@
         />
     
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment"
+        android:id="@+id/fg_container"
         android:name="com.example.proyectob_pmdm_t2_kaiscervasquez.Start_Fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
