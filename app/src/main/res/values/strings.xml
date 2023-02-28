@@ -7,4 +7,9 @@
     <string name="mn_maps">Mapa</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_title_direction">Dirección:</string>
+    <string name="txt_zone">Area:</string>
+    <string name="txt_district">Distrito:</string>
+    <string name="txt_title_description">Descripción</string>
+    <string name="txt_title_time">Horario:</string>
 </resources>

@@ -6,11 +6,12 @@
     tools:context=".fragments.ConsultFragment"
     android:padding="@dimen/padding_default">
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_listMuseums"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         />
 
 </FrameLayout>
