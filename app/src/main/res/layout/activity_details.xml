@@ -8,6 +8,10 @@
     android:background="@color/color_backgroundApp"
     android:padding="@dimen/padding_default"
     >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" >
 
     <LinearLayout
         android:id="@+id/ll_details"
@@ -21,7 +25,7 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Details"
+            android:text=""
             android:textColor="@color/color_text"
             android:textSize="@dimen/text_size_title"
             />
@@ -46,7 +50,7 @@
             android:id="@+id/tv_district"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Text Province"
+            android:text=""
             android:textColor="@color/color_text"
             android:textSize="@dimen/text_size_title"
             android:paddingLeft="10dp"
@@ -74,7 +78,7 @@
             android:id="@+id/tv_zone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Text Province"
+            android:text=""
             android:textColor="@color/color_text"
             android:textSize="@dimen/text_size_title"
             android:paddingLeft="10dp"
@@ -102,7 +106,7 @@
             android:id="@+id/tv_direction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Text Province"
+            android:text=""
             android:textColor="@color/color_text"
             android:textSize="@dimen/text_size_title"
             android:paddingLeft="10dp"
@@ -114,7 +118,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
 
         <TextView
@@ -131,10 +135,10 @@
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="description"
+            android:text=""
             android:textColor="@color/color_text"
             android:textSize="@dimen/text_size_title"
-            android:paddingLeft="10dp"
+
             />
 
 
@@ -143,7 +147,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
 
         <TextView
@@ -160,10 +164,9 @@
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time"
+            android:text=""
             android:textColor="@color/color_text"
             android:textSize="@dimen/text_size_title"
-            android:paddingLeft="10dp"
             />
 
 
@@ -171,5 +174,7 @@
 
 
     </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

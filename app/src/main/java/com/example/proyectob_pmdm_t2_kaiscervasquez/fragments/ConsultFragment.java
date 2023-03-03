@@ -138,6 +138,7 @@ public class ConsultFragment extends Fragment implements View.OnClickListener {
         int pos = rvMuseum.getChildLayoutPosition(v);
         String id = listMuseum.get(pos).getId();
         String editId = id.substring(id.lastIndexOf("/")+1);
+
         Intent intent = new Intent(getActivity(), DetailsActivity.class);
         intent.putExtra(TAG_ID, editId);
         startActivity(intent);

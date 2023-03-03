@@ -32,5 +32,10 @@ public interface APIWebService {
     Query string de la URL de la petición.
      */
 
+    @GET("tipo/entidadesyorganismos/{id}")
+    Call<Museum> getMuseumDetails(@Path("id") String idMuseum);
+
+
+
 
 }
