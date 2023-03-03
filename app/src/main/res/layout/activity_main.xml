@@ -37,7 +37,6 @@
         android:id="@+id/tv_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Provisional"
         android:textColor="@color/color_text"
         android:textSize="16sp"
         android:layout_gravity="left|top"
@@ -47,7 +46,7 @@
     
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fg_container"
-        android:name="com.example.proyectob_pmdm_t2_kaiscervasquez.Start_Fragment"
+        android:name="com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.Start_Fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"

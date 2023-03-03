@@ -1,5 +1,10 @@
 package com.example.proyectob_pmdm_t2_kaiscervasquez.recycleutil;
 
+import static android.app.PendingIntent.getActivity;
+
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +18,18 @@ import com.example.proyectob_pmdm_t2_kaiscervasquez.retrofitutils.Graph;
 
 import java.util.ArrayList;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MuseumVH> {
+
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MuseumVH>
+        implements View.OnClickListener {
 
     private ArrayList<Graph> listMuseum;
+    private View.OnClickListener listener;
 
-    public ListAdapter(ArrayList<Graph> listMuseum) {
+
+
+    public ListAdapter(ArrayList<Graph> listMuseum, View.OnClickListener listener) {
         this.listMuseum = listMuseum;
+        this.listener = listener;
     }
 
     @NonNull
@@ -26,6 +37,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MuseumVH> {
     public MuseumVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_museum,parent, false);
+        view.setOnClickListener(this);
         return new MuseumVH(view);
     }
 
@@ -37,6 +49,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MuseumVH> {
     @Override
     public int getItemCount() {
         return listMuseum.size();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (listener != null){
+            listener.onClick(v);
+        }
     }
 
     public static class MuseumVH extends RecyclerView.ViewHolder{

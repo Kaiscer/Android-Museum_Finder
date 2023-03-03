@@ -11,24 +11,32 @@ public class Graph {
     @SerializedName("@id")
     @Expose
     private String id;
+
     @SerializedName("@type")
     @Expose
     private String type;
+
     @SerializedName("title")
     @Expose
     private String title;
+
     @SerializedName("relation")
     @Expose
     private String relation;
+
     @SerializedName("address")
     @Expose
     private Address address;
     @SerializedName("location")
     @Expose
     private Location location;
+
     @SerializedName("organization")
     @Expose
     private Organization organization;
+    @SerializedName("idMuseum")
+    @Expose
+    private int idMuseum;
 
     public String getId() {
         return id;
@@ -84,6 +92,14 @@ public class Graph {
 
     public void setOrganization(Organization organization) {
         this.organization = organization;
+    }
+
+    public int getIdMuseum() {
+        return idMuseum;
+    }
+
+    public void setIdMuseum(int idMuseum) {
+        this.idMuseum = idMuseum;
     }
 
 }

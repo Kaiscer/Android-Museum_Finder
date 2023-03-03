@@ -1,5 +1,8 @@
 package com.example.proyectob_pmdm_t2_kaiscervasquez.fragments;
 
+
+
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -13,7 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.util.Log;
-
+import android.widget.Toast;
 
 import com.example.proyectob_pmdm_t2_kaiscervasquez.DetailsActivity;
 import com.example.proyectob_pmdm_t2_kaiscervasquez.R;
@@ -22,9 +25,9 @@ import com.example.proyectob_pmdm_t2_kaiscervasquez.retrofitdata.APIWebService;
 import com.example.proyectob_pmdm_t2_kaiscervasquez.retrofitdata.RetrofitClient;
 import com.example.proyectob_pmdm_t2_kaiscervasquez.retrofitutils.Graph;
 import com.example.proyectob_pmdm_t2_kaiscervasquez.retrofitutils.Museum;
-
-
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -32,22 +35,24 @@ import retrofit2.Retrofit;
 
 public class ConsultFragment extends Fragment implements View.OnClickListener {
 
-    public static final String KEY_MUSEUM = "MUSEUM_SEL";
 
+    public static final String TAG_ID = "ID";
+    public static final String TAG_FILTER = "FILTER";
     RecyclerView rvMuseum;
     ListAdapter adapter;
     RecyclerView.LayoutManager llm;
     ArrayList<Graph> listMuseum = new ArrayList<>();
-
-
+    View.OnClickListener listener;
+    String filter;
 
     public ConsultFragment() {
 
     }
 
-    public static ConsultFragment newInstance(String filter) {
+    public static ConsultFragment newInstance(String param) {
         ConsultFragment fragment = new ConsultFragment();
         Bundle args = new Bundle();
+        args.putString(TAG_FILTER, param);
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,7 +64,11 @@ public class ConsultFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.fragment_consult, container, false);
          rvMuseum = view.findViewById(R.id.rv_listMuseums);
-         configRv(listMuseum);
+         listener = this;
+         if (getArguments() != null){
+                filter = getArguments().getString(TAG_FILTER);
+         }
+         configRv();
          getWebServices();
         return view;
     }
@@ -80,16 +89,23 @@ public class ConsultFragment extends Fragment implements View.OnClickListener {
 
     private void getWebServices() {
         if (isNetworkAvailable()) {
-            Retrofit retrofit = RetrofitClient.getClient(APIWebService.BASE_URL_ALL);
+            Retrofit retrofit = RetrofitClient.getClient(APIWebService.BASE_URL);
             APIWebService service = retrofit.create(APIWebService.class);
+            Call<Museum> call;
+            if (filter.isEmpty()){
+                call = service.getAllMuseums(APIWebService.API_KEY);
+            }else {
+               call = service.getMuseumByDistrict(APIWebService.API_KEY, filter);
 
-            Call<Museum> call = service.getMuseums(APIWebService.API_KEY);
+            }
             call.enqueue(new retrofit2.Callback<Museum>() {
                 @Override
                 public void onResponse(Call<Museum> call, Response<Museum> response) {
                     if (response.isSuccessful()) {
                         Museum museum = response.body();
                         uploadData(museum);
+                    }else {
+                        Toast.makeText(getActivity(), "Error en la respuesta", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -104,13 +120,13 @@ public class ConsultFragment extends Fragment implements View.OnClickListener {
 
     private void uploadData(Museum museum) {
         listMuseum = (ArrayList<Graph>) museum.getGraph();
-       adapter = new ListAdapter(listMuseum);
+        adapter = new ListAdapter(listMuseum,  this);
         rvMuseum.setAdapter(adapter);
     }
 
-    private void configRv(ArrayList<Graph> graph) {
+    private void configRv() {
         llm = new LinearLayoutManager(getActivity());
-        adapter = new ListAdapter((ArrayList<Graph>) graph);
+        adapter = new ListAdapter(listMuseum,  this);
         rvMuseum.setHasFixedSize(true);
         rvMuseum.setLayoutManager(llm);
         rvMuseum.setAdapter(adapter);
@@ -120,12 +136,10 @@ public class ConsultFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int pos = rvMuseum.getChildLayoutPosition(v);
-        Graph graph = listMuseum.get(pos);
-
+        String id = listMuseum.get(pos).getId();
+        String editId = id.substring(id.lastIndexOf("/")+1);
         Intent intent = new Intent(getActivity(), DetailsActivity.class);
-        intent.putExtra(KEY_MUSEUM, (CharSequence) graph);
+        intent.putExtra(TAG_ID, editId);
         startActivity(intent);
-
-
     }
 }

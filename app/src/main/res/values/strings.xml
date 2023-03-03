@@ -12,4 +12,10 @@
     <string name="txt_district">Distrito:</string>
     <string name="txt_title_description">Descripción</string>
     <string name="txt_title_time">Horario:</string>
+    <string name="txt_tvFilter">Selecciona el Distrito</string>
+    <string name="btn_accept">Aceptar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="errorOnAttach">Error en el Attach de datos</string>
+    <string name="spnFilter">Selecciona un Filtro</string>
+    <string name="noDataFound">Error en la consulta</string>
 </resources>

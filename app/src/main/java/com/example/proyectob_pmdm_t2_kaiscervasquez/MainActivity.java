@@ -15,13 +15,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.ConsultFragment;
+import com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.Start_Fragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener  {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,OnFiltersListener  {
+
 
     TextView tvFilter;
     Button btnSelectFilter;
     Button btnConsult;
-    String filter;
+    String filter = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
@@ -81,10 +84,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_selectFilter:
+                tvFilter.setText(null);
+                showDialogFilters();
                 break;
             case R.id.btn_consultLists:
-                fragmentManager(new ConsultFragment());
+                fragmentManager(ConsultFragment.newInstance(filter));
                 break;
         }
+    }
+
+    private void showDialogFilters() {
+        DialogFilter dialogFilters = new DialogFilter();
+        dialogFilters.setCancelable(false);
+        dialogFilters.show(getSupportFragmentManager(), "DialogFilters");
+    }
+
+    @Override
+    public void onFilterDistrict(String district) {
+        tvFilter.setVisibility(View.VISIBLE);
+        tvFilter.setText(district);
+        this.filter = district;
+        if (tvFilter.getText().toString().isEmpty()){
+            filter = null;
+        }else {
+            filter = district;
+
+        }
+
+
     }
 }
