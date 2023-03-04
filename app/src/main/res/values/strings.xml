@@ -6,7 +6,7 @@
     <string name="mn_list">Listado</string>
     <string name="mn_maps">Mapa</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Aqui va un mapa</string>
     <string name="txt_title_direction">Dirección:</string>
     <string name="txt_zone">Area:</string>
     <string name="txt_district">Distrito:</string>

@@ -62,8 +62,6 @@ public class DetailsActivity extends AppCompatActivity {
                     Log.e("Error", t.getMessage());
                 }
             });
-        }else {
-
         }
 
 

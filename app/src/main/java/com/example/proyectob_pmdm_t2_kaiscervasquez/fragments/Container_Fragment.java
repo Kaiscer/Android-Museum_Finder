@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import com.example.proyectob_pmdm_t2_kaiscervasquez.R;
 
 
-public class Start_Fragment extends Fragment {
+public class Container_Fragment extends Fragment {
 
 
 
-    public Start_Fragment() {
+    public Container_Fragment() {
         // Required empty public constructor
     }
 
@@ -25,6 +25,6 @@ public class Start_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_start_, container, false);
+        return inflater.inflate(R.layout.fragment_container_, container, false);
     }
 }

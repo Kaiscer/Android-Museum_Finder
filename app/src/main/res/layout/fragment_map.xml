@@ -3,16 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding_default"
-    tools:context=".fragments.Start_Fragment">
+    android:background="@color/color_backgroundApp"
+    tools:context=".fragments.MapFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tvMap"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment"
         android:textColor="@color/color_text"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:gravity="center"
+
         />
 
 </FrameLayout>

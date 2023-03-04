@@ -46,11 +46,11 @@
     
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fg_container"
-        android:name="com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.Start_Fragment"
+        android:name="com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.Container_Fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        tools:layout="@layout/fragment_start_"
+        tools:layout="@layout/fragment_container_"
         />
 
    
@@ -78,7 +78,7 @@
             android:layout_height="1dp"/>
 
         <Button
-            android:id="@+id/btn_consultLists"
+            android:id="@+id/btn_consult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

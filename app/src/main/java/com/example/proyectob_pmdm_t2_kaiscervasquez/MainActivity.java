@@ -15,7 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.ConsultFragment;
-import com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.Start_Fragment;
+import com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.Container_Fragment;
+import com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.MapFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,OnFiltersListener  {
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnSelectFilter;
     Button btnConsult;
     String filter = "";
+    boolean showList = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void managerFG() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.fg_container, new Start_Fragment());
+        ft.replace(R.id.fg_container, new Container_Fragment());
         ft.addToBackStack(null);
         ft.commit();
     }
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.menu_map:
                 btnConsult.setText("Consultar Mapa");
+                showList = false;
                 return false;
 
         }
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvFilter = findViewById(R.id.tv_filter);
         tvFilter.setVisibility(View.INVISIBLE);
         btnSelectFilter = findViewById(R.id.btn_selectFilter);
-        btnConsult = findViewById(R.id.btn_consultLists);
+        btnConsult = findViewById(R.id.btn_consult);
         btnSelectFilter.setOnClickListener(this);
         btnConsult.setOnClickListener(this);
     }
@@ -87,9 +90,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvFilter.setText(null);
                 showDialogFilters();
                 break;
-            case R.id.btn_consultLists:
-                fragmentManager(ConsultFragment.newInstance(filter));
+            case R.id.btn_consult:
+                if (showList){
+                    fragmentManager(ConsultFragment.newInstance(filter));
+                }else {
+                    fragmentManager(MapFragment.newInstance(filter));
+                }
                 break;
+
         }
     }
 
