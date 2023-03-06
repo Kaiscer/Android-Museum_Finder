@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.ConsultFragment;
 import com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.Container_Fragment;
-import com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.MapFragment;
+import com.example.proyectob_pmdm_t2_kaiscervasquez.fragments.MapsFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,OnFiltersListener  {
 
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()){
             case R.id.menu_list:
                 btnConsult.setText("Consultar Listado");
+                showList = true;
                 break;
             case R.id.menu_map:
                 btnConsult.setText("Consultar Mapa");
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (showList){
                     fragmentManager(ConsultFragment.newInstance(filter));
                 }else {
-                    fragmentManager(MapFragment.newInstance(filter));
+                    fragmentManager(MapsFragment.newInstance(filter));
                 }
                 break;
 
